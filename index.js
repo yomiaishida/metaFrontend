@@ -120,3 +120,41 @@ function manager() {
   manager1.doSomethingFun();
   return manager1;
 }
+
+// Array and Object Iteration
+// Task 1
+var dairy = ['cheese', 'sour cream', 'milk', 'yogurt', 'ice cream', 'milkshake']
+
+function logDairy() {
+    for (let dai of dairy) {
+        console.log(dai)
+    }
+}
+
+logDairy()
+// Task 2
+const animal = {
+
+canJump: true
+
+};
+
+const bird = Object.create(animal);
+
+bird.canFly = true;
+
+bird.hasFeathers = true;
+
+function birdCan() {
+    for (const property of Object.keys(bird)) {
+  console.log(`${property}: ${bird[property]}`);
+}    
+}
+birdCan()
+// Task 3
+function animalCan() {
+    for (const property in bird) {
+  console.log(`${property}: ${bird[property]}`);
+    }
+}
+animalCan()
