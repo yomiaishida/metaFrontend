@@ -123,20 +123,25 @@ function manager() {
 
 // Array and Object Iteration
 // Task 1
-var dairy = ['cheese', 'sour cream', 'milk', 'yogurt', 'ice cream', 'milkshake']
+var dairy = [
+  "cheese",
+  "sour cream",
+  "milk",
+  "yogurt",
+  "ice cream",
+  "milkshake",
+];
 
 function logDairy() {
-    for (let dai of dairy) {
-        console.log(dai)
-    }
+  for (let dai of dairy) {
+    console.log(dai);
+  }
 }
 
-logDairy()
+logDairy();
 // Task 2
 const animal = {
-
-canJump: true
-
+  canJump: true,
 };
 
 const bird = Object.create(animal);
@@ -146,15 +151,73 @@ bird.canFly = true;
 bird.hasFeathers = true;
 
 function birdCan() {
-    for (const property of Object.keys(bird)) {
-  console.log(`${property}: ${bird[property]}`);
-}    
+  for (const property of Object.keys(bird)) {
+    console.log(`${property}: ${bird[property]}`);
+  }
 }
-birdCan()
+birdCan();
 // Task 3
 function animalCan() {
-    for (const property in bird) {
-  console.log(`${property}: ${bird[property]}`);
-    }
+  for (const property in bird) {
+    console.log(`${property}: ${bird[property]}`);
+  }
 }
-animalCan()
+animalCan();
+
+// Little Lemon Receipt Maker
+// Given variables
+const dishData = [
+  {
+    name: "Italian pasta",
+    price: 9.55,
+  },
+  {
+    name: "Rice with veggies",
+    price: 8.65,
+  },
+  {
+    name: "Chicken with potatoes",
+    price: 15.55,
+  },
+  {
+    name: "Vegetarian Pizza",
+    price: 6.45,
+  },
+];
+const tax = 1.2;
+
+// Implement getPrices()
+function getPrices(taxBoolean) {
+  for (let i = 0; i < dishData.length; i++) {
+    let finalPrice;
+    if (taxBoolean === true) {
+      finalPrice = dishData[i].price * tax;
+    } else if (taxBoolean === false) {
+      finalPrice = dishData[i].price;
+    } else {
+      console.log("You need to pass a boolean to the getPrices call!");
+      return;
+    }
+    console.log("Dish: " + dishData[i].name + " " + "Price: $" + finalPrice);
+  }
+}
+
+// Implement getDiscount()
+function getDiscount(taxBoolean, guests) {
+  getPrices(taxBoolean);
+  if (typeof guests === "number" && guests > 0 && guests < 30) {
+    let discount = 0;
+    if (guests < 5) {
+      discount = 5;
+    } else if (guests >= 5) {
+      discount = 10;
+    }
+    console.log("Discount is: $" + discount);
+  } else {
+    console.log("The second argument must be a number between 0 and 30");
+  }
+}
+
+// Call getDiscount()
+getDiscount(true, 2);
+getDiscount(false, 10);
